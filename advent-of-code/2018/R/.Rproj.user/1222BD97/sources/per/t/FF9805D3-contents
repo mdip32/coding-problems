@@ -1,0 +1,14 @@
+---
+title: "day1"
+format: html
+editor: visual
+---
+
+## Day1
+
+```{r}
+
+readr::read_file('../inputs/day1.txt')
+
+```
+
