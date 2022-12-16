@@ -6,9 +6,62 @@ editor: visual
 
 ## Day1
 
+
+imports 
 ```{r}
 
-readr::read_file('../inputs/day1.txt')
+library(tidyverse)
 
 ```
 
+Read all lines and conver to one column tibble
+```{r}
+
+file_name <- '../inputs/day1.txt'
+
+file <- read_table(file_name, col_names = FALSE) |> 
+            rename(nums = X1)
+
+```
+ 
+ Get get sum for part1
+```{r}
+
+sum(file)
+
+```
+ 
+ Do the same for part 2.
+ 
+```{r}
+
+already_seen <- function(input) {
+
+  i <- 1
+
+  while (TRUE) {
+    v_sum <- cumsum(rep(input, i))
+    has_dup <- any(duplicated(v_sum))
+    if (has_dup) {
+      return(v_sum[which(duplicated(v_sum))[1]])
+    }
+    i <- i + 1
+  }
+  
+}
+
+already_seen(file$nums)
+
+
+```
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
